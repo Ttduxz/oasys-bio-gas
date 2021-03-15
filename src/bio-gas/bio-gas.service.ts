@@ -11,27 +11,16 @@ export class BioGasService {
     private bioGasDataModel: Model<BioGas>
   ){}
 
-  // async create(station_id:number,humi: number,temp: number,mpxv: number,dfro: number) {
-  //   const tableToCreate: BioGas = new this.bioGasDataModel({
-  //     station_id,
-  //     humi,
-  //     temp,
-  //     mpxv,
-  //     dfro
-  //   })
-  //   return await tableToCreate.save()
-  // }
-
   async create(args:CreateArgs) {
     const tableToCreate: BioGas = new this.bioGasDataModel({ ...args })
     return await tableToCreate.save()
   }
 
-  // async gets(condition?: GetDataArgs) {
-  //   const data = this.bioGasDataModel.find({})
-  //   if () {
-      
-  //   }
-  //   return
-  // }
+  async gets({ station_id }): Promise<BioGas[]> {
+    const data = this.bioGasDataModel.find({})
+    if (station_id) {
+      data.find({station_id})
+    }
+    return data.exec()
+  }
 }
