@@ -1,4 +1,4 @@
-import { BadGatewayException, Controller, DefaultValuePipe, Get, ParseIntPipe, Query } from '@nestjs/common';
+import { BadGatewayException, Body, Controller, DefaultValuePipe, Get, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { CreateArgs } from './bio-gas.dto';
 import { BioGas } from './bio-gas.schema';
 import { BioGasService } from './bio-gas.service';
@@ -8,8 +8,8 @@ export class BioGasController {
   
   constructor(private readonly bioGasService: BioGasService){}
 
-  @Get('/create')
-  create( @Query() args: CreateArgs) {
+  @Post()
+  create( @Body() args: CreateArgs) {
     try {
       const res = this.bioGasService.create(args)
       return res
