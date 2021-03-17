@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateArgs, GetDataArgs } from './bio-gas.dto';
+import { CreateArgs } from './bio-gas.dto';
 import { BioGas } from './bio-gas.schema';
 
 @Injectable()
@@ -16,10 +16,10 @@ export class BioGasService {
     return await tableToCreate.save()
   }
 
-  async gets({ station_id }): Promise<BioGas[]> {
+  async gets({ ID }): Promise<BioGas[]> {
     const data = this.bioGasDataModel.find({})
-    if (station_id) {
-      data.find({station_id})
+    if (ID) {
+      data.find({ID})
     }
     return data.exec()
   }

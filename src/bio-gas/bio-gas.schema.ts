@@ -1,30 +1,25 @@
 import { Document, Types } from 'mongoose';
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose';
 
-@Schema({
-  timestamps: {
-    createdAt: '_createdAt',
-    updatedAt: '_updatedAt',
-  }
-})
+@Schema()
 export class BioGas extends Document {
-  _createdAt: Date
-  _updatedAt: Date
+  @Prop({ type: Number, required: true })
+  ID: number
 
   @Prop({ type: Number, required: true })
-  station_id: number
-
-  @Prop({ type: Number, required: true })
-  humi: number
+  Humi: number
   
   @Prop({ type: Number, required: true }) 
-  temp: number
+  Temp: number
 
   @Prop({ type: Number, required: true })
-  mpxv: number
+  MPXV: number
 
   @Prop({ type: Number, required: true })
-  dfro: number
+  DFRo: number
+
+  @Prop({ type: String, required: true })
+  TimeStamp: Date
 }
 
 export const BioGasSchema = SchemaFactory.createForClass(BioGas);

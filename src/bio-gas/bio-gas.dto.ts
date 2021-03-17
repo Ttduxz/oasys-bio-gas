@@ -1,48 +1,20 @@
-import {
-  IsOptional,
-  ValidateNested,
-} from 'class-validator';
-import { Transform, Type } from 'class-transformer';
-
-export class GetDataFilter {
-  @Type(() => Number)
-  station_id?: number
-
-  @Type(() => Number)
-  humi?: number
-
-  @Type(() => Number)
-  temp?: number
-
-  @Type(() => Number)
-  mpxv?: number
-
-  @Type(() => Number)
-  dfro?: number
-}
-
-export class GetDataArgs {
-  @IsOptional()
-  @ValidateNested()
-  @Type(() => GetDataFilter)
-  filters?: GetDataFilter;
-}
+import { Type } from 'class-transformer';
 
 export class CreateArgs {
   @Type(() => Number)
-  station_id: number
+  ID: number
 
   @Type(() => Number)
-  humi: number
+  Humi: number
 
   @Type(() => Number)
-  temp: number
+  Temp: number
 
   @Type(() => Number)
-  mpxv: number
+  MPXV: number
 
   @Type(() => Number)
-  dfro: number
+  DFRo: number
 }
 
 

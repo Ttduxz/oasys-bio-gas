@@ -23,11 +23,11 @@ export class BioGasController {
     /**
      * Default 0 is nothing value of find in mongoose
      */
-    @Query('station_id', new DefaultValuePipe(0), new ParseIntPipe()) station_id?: number
+    @Query('ID', new DefaultValuePipe(0), new ParseIntPipe()) ID?: number
   ): Promise<BioGas[]> {
     try {
       return await this.bioGasService.gets({
-        station_id
+        ID
       })
     } catch (error) {
       throw new BadGatewayException()
