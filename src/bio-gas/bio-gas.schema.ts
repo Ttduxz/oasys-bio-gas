@@ -1,7 +1,12 @@
 import { Document, Types } from 'mongoose';
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose';
 
-@Schema()
+@Schema({
+  timestamps:{
+    createdAt: "ServerTime",
+    updatedAt: false
+  }
+})
 export class BioGas extends Document {
   @Prop({ type: Number, required: true })
   ID: number
