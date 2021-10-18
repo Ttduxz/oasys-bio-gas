@@ -17,7 +17,7 @@ export class BioGasService {
   }
 
   async gets({ ID }): Promise<BioGas[]> {
-    const data = this.bioGasDataModel.find({})
+    const data = this.bioGasDataModel.find({}).sort({_id:-1})
     if (ID) {
       data.find({ID})
     }
